@@ -3,6 +3,12 @@
 #include <algorithm>
 using namespace std;
 
+/*
+Given an integer array nums that may contain duplicates, return all possible subsets (the power set).
+
+The solution set must not contain duplicate subsets. Return the solution in any order.
+*/
+
 void subsetsum2(int index, vector<int> &arr, vector<int> &ds, vector<vector<int>> &ans)
 {
 
