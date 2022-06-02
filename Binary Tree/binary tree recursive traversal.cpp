@@ -1,46 +1,49 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
-struct Node
+struct node
 {
 	int data;
-	Node * left = NULL;
-	Node *right = NULL;
+	node * left = NULL;
+	node * right = NULL;
 };
 
-struct Node * insert(int val)
+struct node * newNode(int val)
 {
-	Node * newnode = (struct Node * ) malloc(sizeof(struct Node));
+	node * newnode = (struct node * ) malloc(sizeof(struct node));
 	newnode->data = val;
 	newnode->right = NULL;
 	newnode->left = NULL;
+	return (newnode);
 };
 
-void inorder(Node * root)
+void preOrderTrav(node * curr, vector<int> &preOrder)
 {
-	if (root == NULL)
+	if (curr == NULL)
 		return;
-	inorder(root->left);
-	cout<<root->data<< " ";
-	inorder(root->right);
+	preOrder.push_back(curr->data);
+	preOrderTrav(curr->left, preOrder);
+	preOrderTrav(curr->right, preOrder);
 }
 
-void preproder(Node * root)
+void inOrderTrav(node * curr, vector<int> & inOrder)
 {
-	if(root == NULL)
+	if(curr == NULL)
 		return;
-	cout<<root->data << " ";
-	preproder(root->left);
-	preproder(root->right);
+
+	inOrderTrav(curr->left, inOrder);
+	inOrder.push_back(curr->data);
+	inOrderTrav(curr->right, inOrder);
 }
 
-void postoreder(Node *root)
+void postOrderTrav(node *curr, vector<int> &postOrder)
 {
-	if (root == NULL)
+	if (curr == NULL)
 		return;
-	postoreder(root->left);
-	postoreder(root->right);
-	cout<<root->data<< " ";
+	postOrderTrav(curr->left, postOrder);
+	postOrderTrav(curr->right, postOrder);
+	postOrder.push_back(curr->data);
 }
 
 
@@ -48,24 +51,40 @@ void postoreder(Node *root)
 
 int main()
 {
-	Node * root = NULL;
-	root = insert(1);
-	root->left = insert(2);
-	root->right = insert(3);
-	root->left->left = insert(4);
-	root->left->right = insert(5);
-	root->right->left = insert(6);
-	root->right->right = insert(7);
-	root->left->right->left = insert(8);
-	root->right->right->left = insert(9);
-	root->right->right->right = insert(10);
+	node * root = newNode(1);
+	root->left = newNode(2);
+	root->right = newNode(3);
+	root->left->left = newNode(4);
+	root->left->right = newNode(5);
+	root->right->left = newNode(6);
+	root->right->right = newNode(7);
+	root->left->right->left = newNode(8);
+	root->right->right->left = newNode(9);
+	root->right->right->right = newNode(10);
 	
-	cout<< "Inorder Traversal:"<<endl;
-	inorder(root);
+	vector<int> preOrder, inOrder, postOrder;
 	
-	cout<< "\nPreorder Traversal:"<<endl;
-	preproder(root);
+	preOrderTrav(root, preOrder);
+	cout<< " PreOrder Traversal:";
 	
-	cout<<"\n Postorder Traversal:"<<endl;
-	postoreder(root);
+	for(int i = 0; i<preOrder.size(); i++)
+	{
+		cout<<preOrder[i]<< " ";
+	}
+	
+	
+	cout<< "\nInorder Traversal:";
+	inOrderTrav(root, inOrder);
+	for(int i = 0; i<inOrder.size(); i++)
+	{
+		cout<<inOrder[i]<< " ";
+	}
+	
+	
+	cout<<"\n Postorder Traversal:";
+	postOrderTrav(root, postOrder);
+	for(int i = 0; i<postOrder.size(); i++)
+	{
+		cout<<postOrder[i]<< " ";
+	}
 }
