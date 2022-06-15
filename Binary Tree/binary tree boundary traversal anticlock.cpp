@@ -18,7 +18,7 @@ node * newNode(int val)
 	return newnode;
 }
 
-bool isLeadNode(node * root)
+bool isLeaveNode(node * root)
 {
 	return !root->left && !root->right;
 }
@@ -28,7 +28,7 @@ void addLeftBoundary(node * root, vector<int> &res)
 	node * curr = root->left;
 	while(curr)
 	{
-		if(!isLeadNode(curr)) res.push_back(curr->data);
+		if(!isLeaveNode(curr)) res.push_back(curr->data);
 		if(curr->left != NULL)
 			curr = curr->left;
 		else
@@ -42,7 +42,7 @@ void addRightBoundary(node *root, vector<int> &res)
 	vector<int> temp;
 	while(curr)
 	{
-		if(!isLeadNode(curr))  temp.push_back(curr->data);
+		if(!isLeaveNode(curr))  temp.push_back(curr->data);
 		if(curr->right != NULL)
 			curr = curr->right;
 		else
@@ -56,7 +56,7 @@ void addRightBoundary(node *root, vector<int> &res)
 
 void addLeaves(node *root, vector<int> &res)
 {
-	if(isLeadNode(root))
+	if(isLeaveNode(root))
 	{
 		res.push_back(root->data);
 		return;
@@ -70,7 +70,7 @@ vector<int> printAntiClockBoundary(node * root)
 	vector<int> res;
 	if(root == NULL)
 		return res;
-	if(!isLeadNode(root)) res.push_back(root->data);
+	if(!isLeaveNode(root)) res.push_back(root->data);
 	addLeftBoundary(root, res);
 	addLeaves(root, res);
 	addRightBoundary(root, res);
