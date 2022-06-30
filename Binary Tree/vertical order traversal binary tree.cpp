@@ -23,7 +23,9 @@ node * newNode(int val)
 
 vector<vector<int>> verticalTraversal(node * root) 
 {
+	// vetrical index, level, (multiset  values)
 	map<int, map<int, multiset<int>>> nodes;
+	//node, vertical index, label
 	queue<pair<node*, pair<int, int>>> todo;
 	todo.push({root, {0,0}});
 	while(!todo.empty())
