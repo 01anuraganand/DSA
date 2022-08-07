@@ -8,7 +8,7 @@ struct node
 	node * prev = NULL;
 };
 
-void insertAtBeg(node ** head, int val)
+void push_front(node ** head, int val)
 {
 	node * newnode = new node();
 	newnode->data = val;
@@ -24,13 +24,13 @@ void insertAtBeg(node ** head, int val)
 int main()
 {
 	node * head = NULL;
-	insertAtBeg(&head, 1);
-	insertAtBeg(&head, 2);
-	insertAtBeg(&head, 3);
-	insertAtBeg(&head, 4);
-	insertAtBeg(&head, 5);
-	insertAtBeg(&head, 6);
-	insertAtBeg(&head, 7);
+	push_front(&head, 1);
+	push_front(&head, 2);
+	push_front(&head, 3);
+	push_front(&head, 4);
+	push_front(&head, 5);
+	push_front(&head, 6);
+	push_front(&head, 7);
 	
 	node *last;
 	while(head != NULL)
