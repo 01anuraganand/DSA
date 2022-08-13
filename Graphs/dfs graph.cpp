@@ -40,6 +40,7 @@ int main()
 	addEdge(adj, 2, 3);
 	addEdge(adj, 3, 5);
 	addEdge(adj, 2, 6);
+	addEdge(adj, 5, 6);
 	addEdge(adj, 4, 7);
 	cout<< "adjacency list of graph:";
 	for(auto vec1: adj)
