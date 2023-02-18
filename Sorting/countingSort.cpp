@@ -10,16 +10,15 @@ void countingSort(vector<int> &nums)
 	{
 		count[nums[i]]++;
 	}
-	int j = 0;
-	for(int i = 0; i<=maxNumber; i++)
+	for(int i = 0, j = 0; i<=maxNumber; i++)
 	{
-		
 		while(count[i]--)
 		{
 			nums[j++] = i;
 		}
 	}
 }
+
 int main()
 {
 	vector<int> nums{8, 89, 3, 53, 0, 0, 4, 7, 3, 78, 2, 2, 1, 1};
