@@ -163,7 +163,7 @@ int main()
 	
 	cout<<"cherry pickup using memoization:";
 	vector<vector<vector<int>>> dp(r, vector<vector<int>>(c, vector<int>(c, -1)));
-	cout<<maximumChocolateM(0, 0, c-1, r, c, grid, dp);
+	cout<<maximumChocolateM(0, 0, c-1, r, c, grid, dp)<<endl;
 	
 	cout<<"cherry pickup using tabulation:"<<maximumChocolateT(r, c, grid)<<endl;
 	
