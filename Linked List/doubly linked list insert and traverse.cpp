@@ -37,9 +37,30 @@ void push_back(node **head, int val)
 	newnode->next = NULL;
 }
 
+//insert after previous node
+void insertAt(node * prev, int val)
+{
+	if(prev == NULL)
+	{
+		cout<<"Given node is NULL. cant inserted."<<endl;
+		return ;
+	}
+	
+	node * newnode = new node();
+	newnode->data = val;
+	newnode->next = prev->next;
+	prev->next = newnode;
+	newnode->prev = prev;
+	
+	if(newnode->next != NULL)
+		newnode->next->prev = newnode;
+	
+}
+
 int main()
 {
 	node * head = NULL;
+	insertAt(head, 19);
 	push_back(&head, 9);
 	push_front(&head, 1);
 	push_front(&head, 2);
@@ -49,6 +70,8 @@ int main()
 	push_front(&head, 6);
 	push_front(&head, 7);
 	push_back(&head, 10);
+	insertAt(head, 19);
+	
 	
 	
 	node *last;
