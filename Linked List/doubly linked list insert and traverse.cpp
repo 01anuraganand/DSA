@@ -37,12 +37,12 @@ void push_back(node **head, int val)
 	newnode->next = NULL;
 }
 
-//insert after previous node
+//insert after previous given node
 void insertAt(node * prev, int val)
 {
 	if(prev == NULL)
 	{
-		cout<<"Given node is NULL. cant inserted."<<endl;
+		cout<<"Given node is NULL. can't inserted."<<endl;
 		return ;
 	}
 	
@@ -53,8 +53,24 @@ void insertAt(node * prev, int val)
 	newnode->prev = prev;
 	
 	if(newnode->next != NULL)
-		newnode->next->prev = newnode;
-	
+		newnode->next->prev = newnode;	
+}
+
+void deleteNode(node **head, node * todelete)
+{
+	if(*head == NULL || todelete == NULL)
+		return;
+	//If node to delete is head
+	if(*head == todelete)
+		*head = todelete->next;
+	//configuring next node
+	if(todelete->next != NULL)
+		todelete->next->prev = todelete->prev;
+	//configuring prev node
+	if(todelete->prev != NULL)
+		todelete->prev->next = todelete->next;
+	free(todelete);
+	return ;
 }
 
 int main()
@@ -67,12 +83,11 @@ int main()
 	push_front(&head, 3);
 	push_front(&head, 4);
 	push_front(&head, 5);
+	deleteNode(&head, head->next);
 	push_front(&head, 6);
 	push_front(&head, 7);
 	push_back(&head, 10);
 	insertAt(head, 19);
-	
-	
 	
 	node *last;
 	while(head != NULL)
@@ -86,5 +101,5 @@ int main()
 	{
 		cout<< last->data<<" ";
 		last = last->prev;
-	}
+	}	
 }
