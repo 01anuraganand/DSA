@@ -56,23 +56,6 @@ void insertAt(node * prev, int val)
 		newnode->next->prev = newnode;	
 }
 
-void deleteNode(node **head, node * todelete)
-{
-	if(*head == NULL || todelete == NULL)
-		return;
-	//If node to delete is head
-	if(*head == todelete)
-		*head = todelete->next;
-	//configuring next node
-	if(todelete->next != NULL)
-		todelete->next->prev = todelete->prev;
-	//configuring prev node
-	if(todelete->prev != NULL)
-		todelete->prev->next = todelete->next;
-	free(todelete);
-	return ;
-}
-
 int main()
 {
 	node * head = NULL;
@@ -83,7 +66,6 @@ int main()
 	push_front(&head, 3);
 	push_front(&head, 4);
 	push_front(&head, 5);
-	deleteNode(&head, head->next);
 	push_front(&head, 6);
 	push_front(&head, 7);
 	push_back(&head, 10);
