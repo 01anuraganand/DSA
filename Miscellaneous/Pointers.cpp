@@ -191,16 +191,67 @@ void array2D()
 	}
 	cout<<endl;
 }
+void array2D2()
+{
+	/*
+	Concept : ptrArr is type of 'int*', x[] -> x represents the first pointer
+	x[0] ->represented as *(x + 0), 
+	In same way pointer[i][j] is treated as (pointer[i] ->'int*') -> *(pointer[i] + j)
+
+	*/
+	int* ptrArr[3];
+	int x[] = {1, 2, 3};
+	int y[] = {4, 5, 6};
+	int z[] = {7, 8, 9};
+
+	ptrArr[0] = x;
+	ptrArr[1] = y;
+	ptrArr[2] = z;
+
+	for(int i = 0; i<3; i++)
+	{
+		for(int j = 0; j<3; j++)
+			cout<<ptrArr[i][j] << " ";
+		cout<<endl;
+	}
+	cout<<endl;
+	
+	for(int i = 0; i<3; i++)
+	{
+		for(int j = 0; j<3; j++)
+			cout<<*(*(ptrArr + i) + j)<< " "; // or *(pointer[i] + j)
+		cout<<endl;
+	}
+}
+
+void stringPointers()
+{
+	char str[10] = "Anurag";
+	for(int i = 0; str[i] != '\0'; i++)
+		cout<<*(str + i)<< " ";
+
+	cout<<endl;
+	char char2D[2][6] = {{'A', 'n', 'u', 'r', 'a', 'g'}, "Anand"};
+	for(int i = 0; i<2; i++)
+	{
+		for(int j = 0; j < 6; j++)
+			cout<<*(char2D[i] + j);
+
+		cout<<"-"<<endl;
+	}
+
+}
 int main()
 {
-	//pointersIntro();
-	//pointesrsAddressAsign();
-	//pointerManupulation();
-	//pointerAirthematic();
-	//pointerAirthematic2();
-	//pointerTopointers();
-	//arrayPointers();
-	//arrayPointers2();
+	pointersIntro();
+	pointesrsAddressAsign();
+	pointerManupulation();
+	pointerAirthematic();
+	pointerAirthematic2();
+	pointerTopointers();
+	arrayPointers();
+	arrayPointers2();
 	array2D();
-
+	array2D2();
+	stringPointers();
 }
