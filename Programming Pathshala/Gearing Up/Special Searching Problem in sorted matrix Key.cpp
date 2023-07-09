@@ -57,8 +57,9 @@ public:
 	{
 		int n = matrix.size();
 		int m = matrix[0].size();
-		int i = 0, j = n-1;
-		while(i < m-1 && j >= 0)
+		if(n < 1 || m < 1) return {-1, -1};
+		int i = 0, j = m-1;
+		while(i <= n-1 && j >= 0)
 		{
 			if(matrix[i][j] == key)
 				return {i, j};
