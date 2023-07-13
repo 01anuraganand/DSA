@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include <math.h>
 using namespace std;
 class Factor
@@ -64,8 +65,44 @@ class Factor
 			int midDivsor = sqrt(Num); 
 			// checking for perfect number, 
 			// if midDivsor is perfect square then (2*midDivsor + 1) element of divisor will be there
-			if(midDivsor*midDivsor == Num) cout<<"\nTrue";
-			else cout<<"\nFalse";
+			if(midDivsor*midDivsor == Num) cout<<"\nTrue"<<endl;
+			else cout<<"\nFalse"<<endl;
+		}
+
+
+		//------------------------------------------------------TASK 2 (Open Close Problem)------------------------------------------------
+
+		/*
+			Task2: There are N doors initially closed, 
+			Player play the games N times, In ith round you toggle all the states of door
+			that are mutliple of i.
+			What will be the states of last played game
+		*/
+		int task2BruteForce(vector<int> &states, int N)
+		{
+			
+			int n = states.size();
+			for(int i = 1; i<=N; i++)
+			{
+				for(int j = 1; j<n; j++)
+				{
+					if(j % i == 0)
+						states[j] = !states[j];
+				}
+			}
+			int count = 0;
+			for(int i = 1; i<n; i++)
+				if(states[i] == 1)
+					count++;
+			return count;
+		}
+
+		// Upon solving through brute force apprach
+		// it was found, states with perfect square will remain Open
+		int task2Optimal(vector<int> &states, int N)
+		{
+			int x = sqrt(N);
+			return x;
 		}
 };
 int main()
@@ -76,4 +113,10 @@ int main()
 	obj.factorOfNumberHalfNApproach(n);
 	obj.factorOfNumberOptimal(n);
 	obj.task(n);
+	vector<int> states{0, 0, 0, 0, 0, 0}, states2;
+	states2 = states;
+
+	int numberGamePlayed = 5;
+	cout<<obj.task2BruteForce(states, numberGamePlayed+1)<<endl;
+	cout<<obj.task2Optimal(states2, numberGamePlayed)<<endl;
 }
