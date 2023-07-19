@@ -30,9 +30,9 @@ public:
 			counts[val%m]++;
 
 		int ans = 0;
-		for(int i = 0; i<n; i++)
+		for(int i = 0; i<m; i++)
 		{
-			for(int j = i; j<n; j++)
+			for(int j = i; j<m; j++)
 			{
 				int k;
 				if((i + j)%m == 0) k = 0;
