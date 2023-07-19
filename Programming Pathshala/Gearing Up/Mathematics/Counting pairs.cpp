@@ -34,7 +34,7 @@ public:
 		int ans = counts[0]*(counts[0]-1)/2;
 		for(int i = 1; i<= (k/2 -1); i++)
 		{
-			ans += (counts[i]*counts[k-i])/2;			
+			ans += (counts[i]*counts[k-i]);			
 		}
 		if(k % 2 == 0)
 			ans += (counts[k/2]*counts[k/2]-1)/2;
