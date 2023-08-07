@@ -36,7 +36,7 @@ public:
         if (girls >= totalChoose-1)  ans -= pascal[boys][1]*pascal[girls][totalChoose-1];
         if (girls >= totalChoose-2)  ans -= pascal[boys][2]*pascal[girls][totalChoose-2];
         if (girls >= totalChoose-3)  ans -= pascal[boys][3]*pascal[girls][totalChoose-3];
-        if (girls >= totalChoose-4)  ans -= pascal[boys][4]*pascal[girls][totalChoose-4];
+        if (boys >= totalChoose) ans -= pascal[boys][totalChoose];
 
         return ans;
 	}
@@ -45,5 +45,5 @@ public:
 int main()
 {
 	PascalTraingle obj;
-	cout<<obj.solution(30, 30, 5)<<endl;
+	cout<<obj.solution(5, 2, 5)<<endl;
 }
