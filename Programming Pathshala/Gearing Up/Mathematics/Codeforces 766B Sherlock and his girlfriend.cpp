@@ -5,7 +5,7 @@ int main()
 {
 	int n;
 	cin>>n;
-	vector<int> isPrime(n+1, 1);
+	vector<int> isPrime(n+2, 1);
 	isPrime[0] = 0;
 	isPrime[1] = 0;
 	for(int i = 2; i*i<= n+1; i++)
